@@ -6,15 +6,34 @@ Será uma aplicação quer será um relação de cliente com a empresa. O usuár
 
 # Rotas
 
-- Register
+- Register (empresa)
 
   - Login
-    - Empresa
-      - Box
-      - Produtos
 
-- Register
+    - Produtos
+    - Feedback (receive)
+    - Clientes
+      - Faturas
+      - Histórico
+    - Chat
+
+- Register (cliente)
 
   - Login
-    - Cliente
-      - Box (title)
+
+    - Produto
+    - Faturas
+    - Histórico
+    - Feedback (send)
+    - Escolha atual
+    - Escolha do mês (escolhas)
+    - Alteração de dados
+    - Chat
+    - Execução pagamento
+
+# Adicionais
+
+    - Recuperação de senha por email
+    - Email para fazer a escolha da proxima box
+    - Validação de email
+    - Bonus (validação de acesso)
