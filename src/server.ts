@@ -1,3 +1,15 @@
-import app from "./app";
+import 'reflect-metadata';
+import { createConnection } from 'typeorm';
+import { app } from './app';
+import dbOptions from './database/ormconfig';
 
-app.listen(3000);
+const PORT = process.env.PORT ?? '3000';
+
+createConnection(dbOptions)
+  .then(() => {
+    console.log('Database connected');
+    app.listen(PORT, () => {
+      console.log(`App running on port ${PORT}`);
+    });
+  })
+  .catch((error) => console.log(error));

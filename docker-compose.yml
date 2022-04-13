@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 
 services:
   postgres:
@@ -6,9 +6,9 @@ services:
     container_name: capstone-postgres
     restart: always
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
-      POSTGRES_PASSWORD: 123456
+      POSTGRES_PASSWORD: 1234
       POSTGRES_DB: capstone
 
   node:
@@ -18,13 +18,13 @@ services:
     depends_on:
       - postgres
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
     command: sh -c "yarn && yarn dev"
     logging:
-      driver: "json-file"
+      driver: 'json-file'
       options:
-        max-size: "10m"
-        max-file: "5"
+        max-size: '10m'
+        max-file: '5'
