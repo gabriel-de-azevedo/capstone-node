@@ -1,8 +1,8 @@
 import { Router } from "express";
-import testResponse from "../../controllers/test.controller/testResponse";
+import simpleTest from "../../controllers/test.controller/simpleTest";
 
 const testRouter = Router();
 
-testRouter.get("", testResponse);
+testRouter.get("", simpleTest);
 
 export default testRouter;
