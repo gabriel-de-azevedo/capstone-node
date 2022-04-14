@@ -18,6 +18,9 @@ export class UserEntity {
   @Column({ nullable: false })
   name: string;
 
+  @Column({ nullable: false })
+  lastName: string;
+
   @Column({ unique: true, nullable: false })
   email: string;
 
@@ -30,7 +33,7 @@ export class UserEntity {
   @Column({ nullable: false })
   phone: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true, default: false })
   admin: boolean;
 
   @OneToOne(() => AddressEntity, { nullable: true })

@@ -1,24 +1,61 @@
-import { Router } from "express";
+import { Router } from 'express';
 import {
-  loginUserController, registerUserController
-} from "../controllers";
+  findAllUsersController,
+  findUserByIdController,
+  loginUserController,
+  registerUserController,
+  updateUserAdminController,
+  updateUserController,
+} from '../controllers';
 import {
-  validateModelMiddleware
-} from "../middlewares";
-import { userLoginModel, userModel } from "../models";
+  validateAdminMiddleware,
+  validateAuthMiddleware,
+  validateModelMiddleware,
+  validateTokenMiddleware,
+} from '../middlewares';
+import { userAdminModel, userLoginModel, userModel } from '../models';
 
 const userRouter = Router();
 
 userRouter.post(
-  "/register",
+  '/register',
   validateModelMiddleware(userModel),
   registerUserController
 );
 
 userRouter.post(
-  "/login",
+  '/login',
   validateModelMiddleware(userLoginModel),
   loginUserController
+);
+
+userRouter.patch(
+  '/update',
+  validateModelMiddleware(userModel),
+  validateTokenMiddleware,
+  updateUserController
+);
+
+userRouter.patch(
+  '/update/admin',
+  validateModelMiddleware(userAdminModel),
+  validateTokenMiddleware,
+  validateAuthMiddleware,
+  updateUserAdminController
+);
+
+userRouter.get(
+  '/user/:id',
+  validateTokenMiddleware,
+  validateAdminMiddleware,
+  findUserByIdController
+);
+
+userRouter.get(
+  '/users',
+  validateTokenMiddleware,
+  validateAdminMiddleware,
+  findAllUsersController
 );
 
 export { userRouter };

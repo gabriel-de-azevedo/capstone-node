@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { AnySchema } from "yup";
+import { NextFunction, Request, Response } from 'express';
+import { AnySchema } from 'yup';
 
 export const validateModelMiddleware =
   (shape: AnySchema) =>
