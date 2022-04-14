@@ -1,17 +1,21 @@
 import { IUser, UserRepository } from '../../repositories';
 import { ErrorHandler } from '../../utils';
 
-export const updateUserService = async (email: string, body: any) => {
+export const updateUserService = async (
+  params: string,
+  value: string,
+  body: any
+) => {
   try {
-    const user: IUser = await new UserRepository().findUser('email', email);
+    const user: IUser = await new UserRepository().findUser(params, value);
     for (const [key, value] of Object.entries(body)) {
       await new UserRepository().updateUser(user.id, {
         [key]: value,
       });
     }
     const updateUser: IUser = await new UserRepository().findUser(
-      'email',
-      email
+      params,
+      value
     );
 
     delete updateUser.password;

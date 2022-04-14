@@ -1,5 +1,8 @@
+import dotenv from 'dotenv';
 import { NextFunction, Request, Response } from 'express';
 import { IUser, UserRepository } from '../repositories';
+
+dotenv.config();
 
 export const validateAuthMiddleware = async (
   req: Request,
@@ -10,7 +13,7 @@ export const validateAuthMiddleware = async (
     const { key } = req.body;
     const { email } = req;
     const user: IUser = await new UserRepository().findUser('email', email);
-    if (key === 'administration' || user.admin === true) {
+    if (key === process.env.ADMIN_kEY || user.admin === true) {
       return next();
     }
     return res.status(401).json({ error: 'not authorized' });

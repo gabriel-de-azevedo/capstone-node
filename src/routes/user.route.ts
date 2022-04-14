@@ -37,7 +37,7 @@ userRouter.patch(
 );
 
 userRouter.patch(
-  '/update/admin',
+  '/update/admin/:id',
   validateModelMiddleware(userAdminModel),
   validateTokenMiddleware,
   validateAuthMiddleware,

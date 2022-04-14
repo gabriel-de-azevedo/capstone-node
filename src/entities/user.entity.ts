@@ -45,4 +45,5 @@ export class UserEntity {
 
   @OneToMany(() => FeedbackEntity, (feedbacks) => feedbacks.user)
   feedbacks: FeedbackEntity[];
+  key: any;
 }
