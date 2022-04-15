@@ -6,7 +6,6 @@ import { ErrorHandler } from '../../utils';
 
 export const loginUserService = async (email: string, password: string) => {
   const user: IUser = await new UserRepository().findUser('email', email);
-
   if (!user) {
     throw new ErrorHandler(401, 'Wrong email/password');
   }
