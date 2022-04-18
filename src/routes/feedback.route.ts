@@ -1,6 +1,11 @@
 import { Router } from 'express';
-import { createFeedbackController } from '../controllers/feedback/createFeedback.controller';
 import {
+  createFeedbackController,
+  getFeedbackController,
+} from '../controllers';
+
+import {
+  validateAdminMiddleware,
   validateModelMiddleware,
   validateTokenMiddleware,
 } from '../middlewares';
@@ -13,6 +18,13 @@ feedbackRouter.post(
   validateModelMiddleware(feedbackModel),
   validateTokenMiddleware,
   createFeedbackController
+);
+
+feedbackRouter.get(
+  '/feedback?',
+  validateTokenMiddleware,
+  validateAdminMiddleware,
+  getFeedbackController
 );
 
 export { feedbackRouter };
