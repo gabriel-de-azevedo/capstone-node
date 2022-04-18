@@ -13,7 +13,7 @@ export const validateAuthMiddleware = async (
     const { key } = req.body;
     const { email } = req;
     const user: IUser = await new UserRepository().findUser('email', email);
-    if (key === process.env.ADMIN_kEY || user.admin === true) {
+    if (key === process.env.ADMIN_KEY || user.admin === true) {
       return next();
     }
     return res.status(401).json({ error: 'not authorized' });
