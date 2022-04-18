@@ -19,12 +19,13 @@ class FeedbackRepository implements IFeedbackRepository {
   findFeedbackByKey = async (key: string, value: any) => {
     const filtredFeedback = await this.ormRepository.find({
       [key]: value,
-      order: { id: 1 },
     });
     return filtredFeedback;
   };
   findAllFeedback = async () => {
-    const allFeedback = await this.ormRepository.find();
+    const allFeedback = await this.ormRepository.find({
+      relations: ['user'],
+    });
     return allFeedback;
   };
 }
