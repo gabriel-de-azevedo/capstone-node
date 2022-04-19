@@ -33,6 +33,7 @@ const productionEnv = {
   ssl: { rejectUnauthorized: false },
 };
 
-export default process.env.NODE_ENV === 'production'
-  ? (productionEnv as ConnectionOptions)
-  : (developmentEnv as ConnectionOptions);
+const dbOptions =
+  process.env.NODE_ENV === 'production' ? productionEnv : developmentEnv;
+
+export default dbOptions as ConnectionOptions;
