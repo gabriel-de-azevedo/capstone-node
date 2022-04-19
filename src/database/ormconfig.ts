@@ -4,7 +4,7 @@ import { ConnectionOptions } from 'typeorm';
 
 dotenv.config();
 
-const developmentEnv: ConnectionOptions = {
+const developmentEnv = {
   type: 'postgres',
   host: 'capstone-postgres',
   port: 5432,
@@ -21,7 +21,7 @@ const developmentEnv: ConnectionOptions = {
   },
 };
 
-const productionEnv: ConnectionOptions = {
+const productionEnv = {
   type: 'postgres',
   url: process.env.DATABASE_URL,
   entities: [path.join(__dirname, '../entities/**/*.*')],
@@ -34,5 +34,5 @@ const productionEnv: ConnectionOptions = {
 };
 
 export default process.env.NODE_ENV === 'production'
-  ? productionEnv
-  : developmentEnv;
+  ? (productionEnv as ConnectionOptions)
+  : (developmentEnv as ConnectionOptions);
