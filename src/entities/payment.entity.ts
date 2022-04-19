@@ -7,11 +7,14 @@ export class PaymentEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: false })
-  title: string;
+  @Column({ nullable: false, type: 'date' })
+  date: string;
 
   @Column({ nullable: false })
-  description: string;
+  method: string;
+
+  @Column({ nullable: false, type: 'float' })
+  total: number;
 
   @ManyToOne(() => UserEntity, (users) => users.payments)
   user: UserEntity;
