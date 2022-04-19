@@ -1,6 +1,9 @@
 {
   "name": "capstone-node",
   "version": "1.0.0",
+  "engines": {
+    "node": "17.x"
+  },
   "main": "src/server.ts",
   "repository": "git@github.com:azgabe/capstone-node.git",
   "author": "Gabriel Azevedo <gmarquesazti@gmail.com>",
