@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import {
   findAllUsersController,
-  findUserByIdController,
+  findUserController,
   loginUserController,
   registerUserController,
   updateUserAdminController,
@@ -44,12 +44,7 @@ userRouter.patch(
   updateUserAdminController
 );
 
-userRouter.get(
-  '/user/:id',
-  validateTokenMiddleware,
-  validateAdminMiddleware,
-  findUserByIdController
-);
+userRouter.get('/user/', validateTokenMiddleware, findUserController);
 
 userRouter.get(
   '/users',

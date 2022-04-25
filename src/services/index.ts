@@ -4,6 +4,8 @@ import { loginUserService } from './user/loginUser.service';
 import { registerUserService } from './user/registerUser.service';
 import { updateUserService } from './user/updateUser.service';
 import { getFeedbackService } from './feedback/getFeedback';
+import { registerAddressService } from './address/registerAddress.service';
+import { updateAddressService } from './address/updateAddress.service';
 
 export {
   registerUserService,
@@ -12,4 +14,6 @@ export {
   findUserByIDService,
   findAllUserService,
   getFeedbackService,
+  updateAddressService,
+  registerAddressService
 };
