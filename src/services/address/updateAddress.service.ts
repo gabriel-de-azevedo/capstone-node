@@ -1,4 +1,8 @@
-import { IAddress, AddressRepository } from '../../repositories';
+import {
+  IAddress,
+  AddressRepository,
+  UserRepository,
+} from '../../repositories';
 import { ErrorHandler } from '../../utils';
 
 export const updateAddressService = async (
@@ -7,18 +11,30 @@ export const updateAddressService = async (
   body: any
 ) => {
   try {
-    const address: IAddress = await new AddressRepository().findAddress(params, value);
+    const user = await new UserRepository().findUser(params, value);
+    const addressId = user.address.id;
+
+    const address: IAddress = await new AddressRepository().findAddress(
+      'id',
+      user.address.id
+    );
+
     for (const [key, value] of Object.entries(body)) {
       await new AddressRepository().updateAddress(address.id, {
         [key]: value,
       });
     }
+
     const updateAddress: IAddress = await new AddressRepository().findAddress(
-      params,
-      value
+      'id',
+      address.id
     );
 
-    return updateAddress;
+    const savedAddress = await new AddressRepository().saveAddress(
+      updateAddress
+    );
+
+    return savedAddress;
   } catch {
     throw new ErrorHandler(400, 'Estimated parameter not found');
   }
