@@ -6,7 +6,7 @@ import { updateUserController } from './user/updateUser.controller';
 import { updateUserAdminController } from './user/updateUserAdmin.controller';
 import { createFeedbackController } from './feedback/createFeedback.controller';
 import { getFeedbackController } from './feedback/getFeedback.controller';
-import {  registerAddressController } from './adress/registerAddress.controller';
+import { registerAddressController } from './adress/registerAddress.controller';
 import { updateAddressController } from './adress/updateAddress.controller';
 
 export {
@@ -18,4 +18,6 @@ export {
   updateUserAdminController,
   createFeedbackController,
   getFeedbackController,
+  registerAddressController,
+  updateAddressController,
 };

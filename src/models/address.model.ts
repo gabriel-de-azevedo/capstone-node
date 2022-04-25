@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const adressModel = yup.object().shape({
+export const addressModel = yup.object().shape({
   street: yup.string().required(),
   number: yup.string().required(),
   complement: yup.string(),
