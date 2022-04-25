@@ -1,22 +1,24 @@
 import { UpdateResult } from 'typeorm';
 
 interface IAddress {
-    id: string;
-    street: any;
-    number: string;
-    complement: string;
-    district: string;
-    cep: string;
-    city: string;
+  id: string;
+  street: any;
+  number: string;
+  complement: string;
+  district: string;
+  cep: string;
+  city: string;
+  state: string;
 }
 
 interface CreationAddress {
-    street: string;
-    number: string;
-    complement: string;
-    district: string;
-    cep: string;
-    city: string;
+  street: string;
+  number: string;
+  complement: string;
+  district: string;
+  cep: string;
+  city: string;
+  state: string;
 }
 
 interface IAddressRepository {

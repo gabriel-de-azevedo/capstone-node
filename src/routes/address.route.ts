@@ -14,9 +14,9 @@ const addressRouter = Router();
 addressRouter.post(
   '/register/address',
   validateModelMiddleware(addressModel),
+  validateTokenMiddleware,
   registerAddressController
 );
-
 
 addressRouter.patch(
   '/update/address',

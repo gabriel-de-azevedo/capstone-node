@@ -9,7 +9,6 @@ export const addressModel = yup.object().shape({
     .string()
     .matches(/^[0-9]{8}$/)
     .required(),
-  city: yup
-    .string()
-    .required(),
+  city: yup.string().required(),
+  state: yup.string().required(),
 });
