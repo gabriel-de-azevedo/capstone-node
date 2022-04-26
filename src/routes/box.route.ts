@@ -14,12 +14,10 @@ boxRoute.post(
   '/box',
   validateModelMiddleware(boxModel),
   validateTokenMiddleware,
+  validateAdminMiddleware,
   createBoxController
 );
 
-boxRoute.get(
-  '/box?',
-  validateTokenMiddleware,
-  validateAdminMiddleware,
-  getBoxControler
-);
+boxRoute.get('/box?', validateTokenMiddleware, getBoxControler);
+
+export { boxRoute };

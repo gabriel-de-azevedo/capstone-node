@@ -6,20 +6,18 @@ import {
   validateModelMiddleware,
   validateTokenMiddleware,
 } from '../middlewares';
-import { boxModel } from '../models';
+import { productModel } from '../models';
 
-const boxRoute = Router();
+const productRoute = Router();
 
-boxRoute.post(
-  '/box',
-  validateModelMiddleware(boxModel),
+productRoute.post(
+  '/product',
+  validateModelMiddleware(productModel),
   validateTokenMiddleware,
+  validateAdminMiddleware,
   createProductController
 );
 
-boxRoute.get(
-  '/box?',
-  validateTokenMiddleware,
-  validateAdminMiddleware,
-  getProductControler
-);
+productRoute.get('/product?', validateTokenMiddleware, getProductControler);
+
+export { productRoute };
