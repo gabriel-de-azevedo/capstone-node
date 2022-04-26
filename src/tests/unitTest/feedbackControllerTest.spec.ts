@@ -1,11 +1,9 @@
 import { Request, Response } from 'express';
-import { createConnection, getConnection } from 'typeorm';
 import { ConnectionTestJest } from '..';
 import {
   createFeedbackController,
   getFeedbackController,
 } from '../../controllers';
-import dbOptions from '../../database/ormconfig';
 import { UserRepository } from '../../repositories';
 import { insertUserFaker } from '../services/insertUserFaker';
 import { createMockFeedback } from '../services/mockFeedbackFaker';
@@ -54,17 +52,31 @@ describe('testing controller feedback', () => {
 
   it('testing the get function of feedback.controller using filter', async () => {
     const dataMock = await insertUserFaker();
-    const { formatedSavedUser1, feedbackUser1 } = dataMock;
+
+    const { formatedSavedUser1, feedbackUser1, feedbackUser1Again } = dataMock;
 
     const user = formatedSavedUser1.id;
+    const rating = undefined;
+    const content = undefined;
 
-    mockReq.query = { user };
+    mockReq.query = { user, rating, content };
     await getFeedbackController(mockReq as Request, mockRes as Response);
 
     expect(mockRes.status).toBeCalledTimes(1);
     expect(mockRes.status).toBeCalledWith(200);
 
     expect(mockRes.json).toBeCalledTimes(1);
-    expect(mockRes.json).toBeCalledWith([formatedSavedUser1.feedbacks]);
+    expect(mockRes.json).toBeCalledWith(
+      expect.arrayContaining([
+        { ...feedbackUser1, user: { ...formatedSavedUser1 } },
+        { ...feedbackUser1Again, user: { ...formatedSavedUser1 } },
+      ])
+    );
+    /* 
+    [
+      { ...feedbackUser1, user: { ...formatedSavedUser1 } },
+      { ...feedbackUser1Again, user: { ...formatedSavedUser1 } },
+    ]
+    */
   });
 });
