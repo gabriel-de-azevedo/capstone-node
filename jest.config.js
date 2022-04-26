@@ -1,9 +1,9 @@
 /*
- * For a detailed explanation regarding each configuration property and type check, visit:
+ * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -13,8 +13,8 @@ export default {
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/tmp/jest_rs",
 
-  // Automatically clear mock calls and instances between every test
-  clearMocks: true,
+  // Automatically clear mock calls, instances and results before every test
+  // clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -31,7 +31,7 @@ export default {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -93,7 +93,7 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: "ts-jest",
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -101,7 +101,7 @@ export default {
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
 
-  // Automatically reset mock state between every test
+  // Automatically reset mock state before every test
   // resetMocks: false,
 
   // Reset the module registry before running each individual test
@@ -110,7 +110,7 @@ export default {
   // A path to a custom resolver
   // resolver: undefined,
 
-  // Automatically restore mock state between every test
+  // Automatically restore mock state and implementation before every test
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
@@ -146,7 +146,7 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["**/**/*.spec.ts"],
+  testMatch: ['**/**/*.spec.ts'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [

@@ -8,6 +8,8 @@ import { createdBoxService } from './box/createBox';
 import { getBoxService } from './box/getBox';
 import { createdProductService } from './products/createProducts';
 import { getProductService } from './products/getProducts';
+import { registerAddressService } from './address/registerAddress.service';
+import { updateAddressService } from './address/updateAddress.service';
 
 export {
   registerUserService,
@@ -20,4 +22,6 @@ export {
   getBoxService,
   createdProductService,
   getProductService,
+  updateAddressService,
+  registerAddressService
 };
