@@ -72,11 +72,5 @@ describe('testing controller feedback', () => {
         { ...feedbackUser1Again, user: { ...formatedSavedUser1 } },
       ])
     );
-    /* 
-    [
-      { ...feedbackUser1, user: { ...formatedSavedUser1 } },
-      { ...feedbackUser1Again, user: { ...formatedSavedUser1 } },
-    ]
-    */
   });
 });

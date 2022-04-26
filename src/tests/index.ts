@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import { unlink } from 'fs/promises';
 import path from 'path';
-import { ConnectionOptions, createConnection, getConnection } from 'typeorm';
+import { createConnection, getConnection } from 'typeorm';
 import dbOptions from '../database/ormconfig';
 
 class ConnectionTestJest {
@@ -10,19 +10,21 @@ class ConnectionTestJest {
     this.dbpath = path.join(__dirname, '../../dbTest.sqlite');
   }
   create = async () => {
-    await createConnection(dbOptions as ConnectionOptions);
+    if (existsSync(this.dbpath)) {
+      await unlink(this.dbpath);
+    }
+    await createConnection(dbOptions);
   };
 
   close = async () => {
-    const conn = getConnection();
-    conn.close();
+    await getConnection('default').close();
     if (existsSync(this.dbpath)) {
       await unlink(this.dbpath);
     }
   };
 
   clear = async () => {
-    const conn = getConnection();
+    const conn = getConnection('default');
     const entities = conn.entityMetadatas;
 
     entities.forEach(async (entiti) => {
