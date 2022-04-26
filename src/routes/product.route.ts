@@ -3,23 +3,18 @@ import { createProductController } from '../controllers';
 import { getProductControler } from '../controllers';
 import {
   validateAdminMiddleware,
-  validateModelMiddleware,
   validateTokenMiddleware,
 } from '../middlewares';
-import { boxModel } from '../models';
 
-const boxRoute = Router();
+const productRoute = Router();
 
-boxRoute.post(
-  '/box',
-  validateModelMiddleware(boxModel),
+productRoute.post(
+  '/product',
   validateTokenMiddleware,
+  validateAdminMiddleware,
   createProductController
 );
 
-boxRoute.get(
-  '/box?',
-  validateTokenMiddleware,
-  validateAdminMiddleware,
-  getProductControler
-);
+productRoute.get('/product?', validateTokenMiddleware, getProductControler);
+
+export { productRoute };
