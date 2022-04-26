@@ -4,6 +4,11 @@ import { createdProductService } from '../../services';
 
 export const createProductController = async (req: Request, res: Response) => {
   const { validated } = req;
-  const result = await createdProductService(validated as Iproduct);
-  res.status(201).json(result);
+  const { boxId } = validated;
+  try {
+    const result = await createdProductService(validated as Iproduct, boxId);
+    res.status(201).json(result);
+  } catch (e) {
+    res.status(409).json(e);
+  }
 };
