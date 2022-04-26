@@ -1,10 +1,11 @@
 import { BoxRepository, Ibox } from '../../repositories';
+import { ErrorHandler } from '../../utils';
 
 const createdBoxService = async (boxdata: Ibox) => {
   const boxInstance = new BoxRepository();
-  const filteredBox = boxInstance.findBoxByKey('title', boxdata.title);
-  if (!filteredBox[0]) {
-    throw { msg: 'box already exists' };
+  const filteredBox = await boxInstance.findBoxByKey('title', boxdata.title);
+  if (filteredBox.length > 0) {
+    throw new ErrorHandler(409, 'box already exists');
   }
   const createBox = boxInstance.createBox(boxdata);
 

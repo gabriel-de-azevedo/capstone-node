@@ -1,13 +1,14 @@
 import { ProductRepository, Iproduct, BoxRepository } from '../../repositories';
+import { ErrorHandler } from '../../utils';
 
-const createdProductService = async (productData: Iproduct, boxId) => {
+const createdProductService = async (productData: Iproduct, boxId: string) => {
   const productInstance = new ProductRepository();
-  const filteredProduct = productInstance.findProductbyKey(
-    'tittle',
+  const filteredProduct = await productInstance.findProductbyKey(
+    'title',
     productData.title
   );
-  if (!filteredProduct[0]) {
-    throw { msg: 'Product already exists' };
+  if (filteredProduct.length > 0) {
+    throw new ErrorHandler(409, 'product already exists');
   }
   const box = new BoxRepository().findBoxByKey('id', boxId);
   const createProduct = productInstance.createProduct(productData);
