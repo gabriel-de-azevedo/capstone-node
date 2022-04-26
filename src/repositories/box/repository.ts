@@ -23,7 +23,8 @@ class BoxRepository implements IboxRepository {
     });
     return boxFiltered;
   };
-  findAllBox = async () => await this.ormRepository.find();
+  findAllBox = async () =>
+    await this.ormRepository.find({ relations: ['products'] });
 }
 
 export { BoxRepository, Ibox };

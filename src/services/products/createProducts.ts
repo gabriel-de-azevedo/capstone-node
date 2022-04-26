@@ -10,7 +10,7 @@ const createdProductService = async (productData: Iproduct, boxId: string) => {
   if (filteredProduct.length > 0) {
     throw new ErrorHandler(409, 'product already exists');
   }
-  const box = new BoxRepository().findBoxByKey('id', boxId);
+  const box = await new BoxRepository().findBoxByKey('id', boxId);
   const createProduct = productInstance.createProduct(productData);
   createProduct.box = box[0];
   const saveProduct = await productInstance.saveProduct(createProduct);
