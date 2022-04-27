@@ -5,6 +5,8 @@ export const findUserByIDService = async (params: string, value: string) => {
   try {
     const user: IUser = await new UserRepository().findUser(params, value);
 
+    console.log(user);
+
     delete user.admin;
     delete user.password;
 
