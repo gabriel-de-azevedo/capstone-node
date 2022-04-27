@@ -20,5 +20,5 @@ export class PaymentEntity {
   user: UserEntity;
 
   @ManyToOne(() => BoxEntity, (boxes) => boxes.payments)
-  box: BoxEntity;
+  box: BoxEntity[];
 }

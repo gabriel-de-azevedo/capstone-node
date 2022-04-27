@@ -1,18 +1,23 @@
+import { BoxEntity } from '../../entities';
 import {
   PaymentRepository,
   IPayment,
   UserRepository,
 } from '../../repositories';
 
-const createPayment = async (email: string, payment: IPayment) => {
+const createPayment = async (
+  email: string,
+  payment: IPayment,
+  box: BoxEntity[]
+) => {
   const paymentInstance = new PaymentRepository();
   const user = await new UserRepository().findUser('email', email);
   const newPayment = paymentInstance.createPayment(payment);
-  newPayment.user = user;
+  newPayment.box = box;
   const savedPayment = await paymentInstance.savePayment(newPayment);
 
   const { password, address, ...formatedUser } = user;
-  return { ...savedPayment, user: { ...formatedUser } };
+  return { ...savedPayment, user: { ...formatedUser }, box: { box } };
 };
 
 export { createPayment };
