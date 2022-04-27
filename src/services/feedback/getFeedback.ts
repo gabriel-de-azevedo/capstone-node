@@ -15,7 +15,7 @@ const getFeedbackService = async ({ user, rating, content }) => {
   }
 
   result = result.map((item) => {
-    const { password, ...formatedUser } = item.user;
+    const { password, admin, ...formatedUser } = item.user;
     return { ...item, user: formatedUser };
   });
   return result;

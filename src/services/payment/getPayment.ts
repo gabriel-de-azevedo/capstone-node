@@ -2,7 +2,7 @@ import { PaymentEntity } from '../../entities';
 import { PaymentRepository } from '../../repositories';
 
 const getPaymentService = async ({ date, method, total, user, box }) => {
-  let result: PaymentEntity[] = [];
+  let result = [];
   const paymentRepo = new PaymentRepository();
   result = await paymentRepo.findAllPayment();
   if (date) {
@@ -20,6 +20,12 @@ const getPaymentService = async ({ date, method, total, user, box }) => {
   if (box) {
     result = result.filter((item) => item.box.id === box);
   }
+
+  result = result.map((item) => {
+    const { password, admin, ...formatedUser } = item.user;
+    return { ...item, user: formatedUser };
+  });
+
   return result;
 };
 
