@@ -12,6 +12,7 @@ export const updateUserService = async (id: string, body: any) => {
     const user = await new UserRepository().findUser('id', id);
 
     delete user.password;
+    delete user.admin;
 
     return user;
   } catch {

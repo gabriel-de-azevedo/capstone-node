@@ -8,7 +8,6 @@ export const updateUserController = async (req: Request, res: Response) => {
 
   try {
     const user = await updateUserService(id, body);
-    delete user.admin;
     return res.status(200).json(user);
   } catch (error) {
     return handleError(error, res);
