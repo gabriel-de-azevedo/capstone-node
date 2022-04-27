@@ -10,6 +10,7 @@ import { createdProductService } from './products/createProducts';
 import { getProductService } from './products/getProducts';
 import { registerAddressService } from './address/registerAddress.service';
 import { updateAddressService } from './address/updateAddress.service';
+import { getPaymentService } from './payment/getPayment';
 
 export {
   registerUserService,
@@ -23,5 +24,6 @@ export {
   createdProductService,
   getProductService,
   updateAddressService,
-  registerAddressService
+  registerAddressService,
+  getPaymentService,
 };

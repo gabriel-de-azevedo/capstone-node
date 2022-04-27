@@ -13,4 +13,5 @@ export const userModel = yup.object().shape({
     .string()
     .matches(/^[0-9]{10}$/)
     .required(),
+  admin: yup.boolean(),
 });
