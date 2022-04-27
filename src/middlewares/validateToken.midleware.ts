@@ -22,7 +22,6 @@ export const validateTokenMiddleware = (
     if (err) {
       return res.status(401).json({ error: 'Incorrect email or password' });
     }
-    console.log(decoded);
     req.id = decoded.user.id;
     req.email = decoded.user.email;
 
