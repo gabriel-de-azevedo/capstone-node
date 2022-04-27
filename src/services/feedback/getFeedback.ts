@@ -4,7 +4,6 @@ const getFeedbackService = async ({ user, rating, content }) => {
   let result = [];
   const feedbackRepo = new FeedbackRepository();
   result = await feedbackRepo.findAllFeedback();
-
   if (user) {
     result = result.filter((item) => item.user.id === user);
   }
