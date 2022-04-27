@@ -9,7 +9,6 @@ export const validateAdminMiddleware = async (
   try {
     const { email } = req;
     const user: IUser = await new UserRepository().findUser('email', email);
-    console.log(user);
     if (user.admin) {
       return next();
     }

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createPaymentController } from '../controllers';
+import { createPaymentController, getPaymentController } from '../controllers';
 
 import {
   validateAdminMiddleware,
@@ -17,11 +17,11 @@ paymentRouter.post(
   createPaymentController
 );
 
-// feedbackRouter.get(
-//   '/feedback?',
-//   validateTokenMiddleware,
-//   validateAdminMiddleware,
-//   getFeedbackController
-// );
+paymentRouter.get(
+  '/payment?',
+  validateTokenMiddleware,
+  validateAdminMiddleware,
+  getPaymentController
+);
 
 export { paymentRouter };

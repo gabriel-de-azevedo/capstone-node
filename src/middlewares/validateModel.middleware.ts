@@ -11,8 +11,6 @@ export const validateModelMiddleware =
         stripUnknown: true,
       });
 
-      console.log(validated);
-
       req.validated = validated;
 
       return next();
