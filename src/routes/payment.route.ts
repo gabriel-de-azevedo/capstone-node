@@ -3,6 +3,7 @@ import { createPaymentController, getPaymentController } from '../controllers';
 
 import {
   validateAdminMiddleware,
+  validateBoxId,
   validateModelMiddleware,
   validateTokenMiddleware,
 } from '../middlewares';
@@ -14,6 +15,7 @@ paymentRouter.post(
   '/payment',
   validateModelMiddleware(paymentModel),
   validateTokenMiddleware,
+  validateBoxId,
   createPaymentController
 );
 
