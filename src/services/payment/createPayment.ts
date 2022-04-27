@@ -8,7 +8,7 @@ import {
 const createPayment = async (
   email: string,
   payment: IPayment,
-  box: BoxEntity[]
+  box: BoxEntity
 ) => {
   const paymentInstance = new PaymentRepository();
   const user = await new UserRepository().findUser('email', email);
@@ -17,7 +17,7 @@ const createPayment = async (
   const savedPayment = await paymentInstance.savePayment(newPayment);
 
   const { password, address, ...formatedUser } = user;
-  return { ...savedPayment, user: { ...formatedUser }, box: { box } };
+  return { ...savedPayment, user: { ...formatedUser }, box };
 };
 
 export { createPayment };
