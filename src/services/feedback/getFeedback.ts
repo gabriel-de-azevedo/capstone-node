@@ -1,10 +1,10 @@
-import { FeedbackEntity } from '../../entities';
 import { FeedbackRepository } from '../../repositories';
 
 const getFeedbackService = async ({ user, rating, content }) => {
-  let result: FeedbackEntity[] = [];
+  let result = [];
   const feedbackRepo = new FeedbackRepository();
   result = await feedbackRepo.findAllFeedback();
+
   if (user) {
     result = result.filter((item) => item.user.id === user);
   }
@@ -14,6 +14,11 @@ const getFeedbackService = async ({ user, rating, content }) => {
   if (content) {
     result = result.filter((item) => item.content.includes(String(content)));
   }
+
+  result = result.map((item) => {
+    const { password, ...formatedUser } = item.user;
+    return { ...item, user: formatedUser };
+  });
   return result;
 };
 
