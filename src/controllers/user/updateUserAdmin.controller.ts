@@ -10,7 +10,7 @@ export const updateUserAdminController = async (
   const body = req.validated;
   delete body.key;
   try {
-    const user = await updateUserService('id', id, body);
+    const user = await updateUserService(id, body);
     return res.status(200).json(user);
   } catch (error) {
     return handleError(error, res);
