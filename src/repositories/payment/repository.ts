@@ -18,13 +18,14 @@ class PaymentRepository implements IPaymentRepository {
 
   findPaymentByKey = async (key: string, value: any) => {
     const filteredPayment = await this.ormRepository.find({
-      [key]: value,
+      where: { [key]: value },
+      relations: ['user', 'box'],
     });
     return filteredPayment;
   };
   findAllPayment = async () => {
     const allPayment = await this.ormRepository.find({
-      relations: ['user'],
+      relations: ['user', 'box'],
     });
     return allPayment;
   };

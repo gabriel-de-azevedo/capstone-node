@@ -14,10 +14,10 @@ const createPayment = async (
   const user = await new UserRepository().findUser('email', email);
   const newPayment = paymentInstance.createPayment(payment);
   newPayment.box = box;
+  newPayment.user = user;
   const savedPayment = await paymentInstance.savePayment(newPayment);
 
-  const { password, address, ...formatedUser } = user;
-  return { ...savedPayment, user: { ...formatedUser }, box };
+  return savedPayment;
 };
 
 export { createPayment };

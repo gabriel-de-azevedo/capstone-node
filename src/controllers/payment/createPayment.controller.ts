@@ -5,8 +5,8 @@ import { BoxRepository } from '../../repositories';
 
 export const createPaymentController = async (req: Request, res: Response) => {
   const { validated, email } = req;
-  const { idBox } = req.body;
-  const box = await new BoxRepository().findBoxByKey('id', idBox);
+  const { boxId } = req.body;
+  const box = await new BoxRepository().findBoxByKey('id', boxId);
   const result = await createPayment(email, validated as IPayment, box[0]);
   res.status(201).json(result);
 };
