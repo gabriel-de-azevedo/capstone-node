@@ -9,7 +9,7 @@ createConnection(dbOptions)
   .then(() => {
     console.log('Database connected');
     app.listen(PORT, () => {
-      console.log(`App running on port ${PORT}`);
+      console.log('App running');
     });
   })
   .catch((error) => console.log(error));

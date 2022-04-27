@@ -12,7 +12,8 @@ import { getProductControler } from './products/getProduct.controller';
 import { createProductController } from './products/createProduct.controller';
 import { registerAddressController } from './adress/registerAddress.controller';
 import { updateAddressController } from './adress/updateAddress.controller';
-
+import { createPaymentController } from './payment/createPayment.controller';
+import { getPaymentController } from './payment/getPayment.controller';
 
 export {
   loginUserController,
@@ -29,4 +30,6 @@ export {
   createProductController,
   registerAddressController,
   updateAddressController,
+  createPaymentController,
+  getPaymentController,
 };

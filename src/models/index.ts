@@ -5,6 +5,7 @@ import { feedbackModel } from './feedback.model';
 import { boxModel } from './box.model';
 import { productModel } from './product.model';
 import { addressModel } from './address.model';
+import { paymentModel } from './payment.model';
 
 export {
   userModel,
@@ -14,4 +15,5 @@ export {
   addressModel,
   boxModel,
   productModel,
+  paymentModel,
 };

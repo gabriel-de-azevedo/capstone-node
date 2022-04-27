@@ -3,6 +3,7 @@ import { createProductController } from '../controllers';
 import { getProductControler } from '../controllers';
 import {
   validateAdminMiddleware,
+  validateBoxId,
   validateModelMiddleware,
   validateTokenMiddleware,
 } from '../middlewares';
@@ -15,6 +16,7 @@ productRoute.post(
   validateModelMiddleware(productModel),
   validateTokenMiddleware,
   validateAdminMiddleware,
+  validateBoxId,
   createProductController
 );
 

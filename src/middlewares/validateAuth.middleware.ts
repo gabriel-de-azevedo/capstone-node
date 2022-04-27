@@ -11,8 +11,8 @@ export const validateAuthMiddleware = async (
 ) => {
   try {
     const { key } = req.body;
-    const { email } = req;
-    const user: IUser = await new UserRepository().findUser('email', email);
+    const { id } = req;
+    const user: IUser = await new UserRepository().findUser('id', id);
     if (key === process.env.ADMIN_KEY || user.admin === true) {
       return next();
     }

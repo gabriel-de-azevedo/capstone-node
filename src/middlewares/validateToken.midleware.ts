@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { jwtConfig } from '../configs';
+import { IUser } from '../repositories';
 
 interface IDecode {
-  email: string;
+  user: IUser;
 }
 
 export const validateTokenMiddleware = (
@@ -21,7 +22,8 @@ export const validateTokenMiddleware = (
     if (err) {
       return res.status(401).json({ error: 'Incorrect email or password' });
     }
-    req.email = decoded.email;
+    req.id = decoded.user.id;
+    req.email = decoded.user.email;
 
     return next();
   });
