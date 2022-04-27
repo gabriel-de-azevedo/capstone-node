@@ -14,6 +14,7 @@ import {
   validateTokenMiddleware,
 } from '../middlewares';
 import { userAdminModel, userLoginModel, userModel } from '../models';
+import { userPatchModel } from '../models/userPatch.model';
 
 const userRouter = Router();
 
@@ -31,7 +32,7 @@ userRouter.post(
 
 userRouter.patch(
   '/update',
-  validateModelMiddleware(userModel),
+  validateModelMiddleware(userPatchModel),
   validateTokenMiddleware,
   updateUserController
 );
