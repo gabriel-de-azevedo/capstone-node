@@ -6,7 +6,6 @@ export const findAllUserService = async () => {
     const users: IUser[] = await new UserRepository().findUsers();
 
     users.map((user) => {
-      delete user.admin;
       delete user.password;
     });
 
