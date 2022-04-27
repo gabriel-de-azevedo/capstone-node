@@ -4,6 +4,8 @@ import { ConnectionOptions } from 'typeorm';
 
 dotenv.config();
 
+const ND_ENV = process.env.NODE_ENV;
+
 const developmentEnv = {
   type: 'postgres',
   host: 'capstone-postgres',
@@ -33,7 +35,19 @@ const productionEnv = {
   ssl: { rejectUnauthorized: false },
 };
 
+const testEnv = {
+  type: 'sqlite',
+  database: path.join(__dirname, '../../dbTest.sqlite'),
+  synchronize: true,
+  entities: [path.join(__dirname, '../entities/**/*.*')],
+  migrations: [path.join(__dirname, '../migrations/**/*.*')],
+};
+
 const dbOptions =
-  process.env.NODE_ENV === 'production' ? productionEnv : developmentEnv;
+  ND_ENV === 'production'
+    ? productionEnv
+    : ND_ENV === 'test'
+    ? testEnv
+    : developmentEnv;
 
 export default dbOptions as ConnectionOptions;

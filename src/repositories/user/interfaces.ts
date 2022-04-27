@@ -11,6 +11,7 @@ interface IUser {
 }
 
 interface CreationUser {
+  phone: string;
   name: string;
   lastName: string;
   cpf: string;
