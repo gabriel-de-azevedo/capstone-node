@@ -4,6 +4,7 @@ import { jwtConfig } from '../configs';
 
 interface IDecode {
   email: string;
+  id: string;
 }
 
 export const validateTokenMiddleware = (
@@ -21,6 +22,7 @@ export const validateTokenMiddleware = (
     if (err) {
       return res.status(401).json({ error: 'Incorrect email or password' });
     }
+    req.id = decoded.id;
     req.email = decoded.email;
 
     return next();

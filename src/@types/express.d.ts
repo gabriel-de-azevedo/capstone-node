@@ -7,6 +7,7 @@ declare global {
       validated: any;
       token: string;
       email: string;
+      id: string;
     }
   }
 }

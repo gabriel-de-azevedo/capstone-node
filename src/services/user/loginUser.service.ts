@@ -1,11 +1,12 @@
 import bcrypt from 'bcryptjs';
 import JsonWebToken from 'jsonwebtoken';
 import { jwtConfig } from '../../configs';
-import { IUser, UserRepository } from '../../repositories';
+import { UserRepository } from '../../repositories';
 import { ErrorHandler } from '../../utils';
 
 export const loginUserService = async (email: string, password: string) => {
-  const user: IUser = await new UserRepository().findUser('email', email);
+  const user = await new UserRepository().findUser('email', email);
+
   if (!user) {
     throw new ErrorHandler(401, 'Wrong email/password');
   }
@@ -17,7 +18,9 @@ export const loginUserService = async (email: string, password: string) => {
       throw new ErrorHandler(401, 'Wrong email/password');
     }
 
-    const token = JsonWebToken.sign({ email }, jwtConfig.secretKey, {
+    delete user.address;
+
+    const token = JsonWebToken.sign({ user }, jwtConfig.secretKey, {
       expiresIn: jwtConfig.expiresIn,
     });
 
