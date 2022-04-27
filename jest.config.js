@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   coverageProvider: 'v8',
   preset: 'ts-jest',
   transform: { '^.+\\.ts?$': 'ts-jest' },
