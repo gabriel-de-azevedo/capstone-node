@@ -17,14 +17,14 @@ class ConnectionTestJest {
   };
 
   close = async () => {
-    await getConnection('default').close();
+    await getConnection().close();
     if (existsSync(this.dbpath)) {
       await unlink(this.dbpath);
     }
   };
 
   clear = async () => {
-    const conn = getConnection('default');
+    const conn = getConnection();
     const entities = conn.entityMetadatas;
 
     entities.forEach(async (entiti) => {

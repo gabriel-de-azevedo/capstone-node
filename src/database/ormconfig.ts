@@ -37,9 +37,10 @@ const productionEnv = {
 
 const testEnv = {
   type: 'sqlite',
-  database: '../../dbTest.sqlite',
+  database: path.join(__dirname, '../../dbTest.sqlite'),
   synchronize: true,
-  entities: ['src/entities/**/*.*'],
+  entities: [path.join(__dirname, '../entities/**/*.*')],
+  migrations: [path.join(__dirname, '../migrations/**/*.*')],
 };
 
 const dbOptions =
