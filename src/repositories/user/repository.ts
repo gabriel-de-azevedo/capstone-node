@@ -10,11 +10,13 @@ class UserRepository implements IUserRepository {
   }
   createUser = (user: CreationUser) => this.ormRepository.create(user);
   saveUser = async (user: IUser) => this.ormRepository.save(user);
-  findUser = async (key: string, value: string) =>
-    await this.ormRepository.findOne({
-      [key]: value,
+  findUser = async (key: string, value: string) => {
+    const found = await this.ormRepository.findOne({
+      where: { [key]: value },
       relations: ['address'],
     });
+    return found;
+  };
   findUsers = async () => this.ormRepository.find({ relations: ['address'] });
   updateUser = async (id: string, update: { [x: string]: unknown }) =>
     await this.ormRepository.update(id, update);

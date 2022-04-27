@@ -15,6 +15,10 @@ export const registerAddressService = async (
   validated: CreationAddress,
   userEmail: string
 ) => {
+  const user = await new UserRepository().findUser('email', userEmail);
+  if (user.address) {
+    throw new ErrorHandler(409, 'user already has an address');
+  }
   try {
     const newAddress: IAddress = new AddressRepository().createAddress(
       validated
@@ -24,7 +28,6 @@ export const registerAddressService = async (
       newAddress
     );
 
-    const user = await new UserRepository().findUser('email', userEmail);
     user.address = savedAddress;
     new UserRepository().saveUser(user);
 
