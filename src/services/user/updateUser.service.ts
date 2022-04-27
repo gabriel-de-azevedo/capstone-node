@@ -1,26 +1,19 @@
-import { IUser, UserRepository } from '../../repositories';
+import { UserRepository } from '../../repositories';
 import { ErrorHandler } from '../../utils';
 
-export const updateUserService = async (
-  params: string,
-  value: string,
-  body: any
-) => {
+export const updateUserService = async (id: string, body: any) => {
   try {
-    const user: IUser = await new UserRepository().findUser(params, value);
     for (const [key, value] of Object.entries(body)) {
-      await new UserRepository().updateUser(user.id, {
+      await new UserRepository().updateUser(id, {
         [key]: value,
       });
     }
-    const updateUser: IUser = await new UserRepository().findUser(
-      params,
-      value
-    );
 
-    delete updateUser.password;
+    const user = await new UserRepository().findUser('id', id);
 
-    return updateUser;
+    delete user.password;
+
+    return user;
   } catch {
     throw new ErrorHandler(400, 'Estimated parameter not found');
   }

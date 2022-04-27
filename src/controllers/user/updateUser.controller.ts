@@ -3,11 +3,11 @@ import { updateUserService } from '../../services';
 import { handleError } from '../../utils';
 
 export const updateUserController = async (req: Request, res: Response) => {
-  const { email } = req;
+  const { id } = req;
   const body = req.validated;
 
   try {
-    const user = await updateUserService('email', email, body);
+    const user = await updateUserService(id, body);
     delete user.admin;
     return res.status(200).json(user);
   } catch (error) {
