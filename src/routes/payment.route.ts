@@ -12,7 +12,7 @@ import { paymentModel } from '../models';
 const paymentRouter = Router();
 
 paymentRouter.post(
-  '/payment',
+  '/box/payment',
   validateModelMiddleware(paymentModel),
   validateTokenMiddleware,
   validateBoxId,
@@ -20,7 +20,7 @@ paymentRouter.post(
 );
 
 paymentRouter.get(
-  '/payment?',
+  '/box/payment?',
   validateTokenMiddleware,
   validateAdminMiddleware,
   getPaymentController

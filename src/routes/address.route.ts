@@ -7,20 +7,20 @@ import {
   validateModelMiddleware,
   validateTokenMiddleware,
 } from '../middlewares';
-import { addressModel } from '../models';
+import { addressModel, addressPatchModel } from '../models';
 
 const addressRouter = Router();
 
 addressRouter.post(
-  '/register/address',
+  '/user/address/register',
   validateModelMiddleware(addressModel),
   validateTokenMiddleware,
   registerAddressController
 );
 
 addressRouter.patch(
-  '/update/address',
-  validateModelMiddleware(addressModel),
+  '/user/address/update',
+  validateModelMiddleware(addressPatchModel),
   validateTokenMiddleware,
   updateAddressController
 );

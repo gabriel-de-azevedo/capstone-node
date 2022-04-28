@@ -13,14 +13,14 @@ export const validateTokenMiddleware = (
   next: NextFunction
 ) => {
   if (!req.headers.authorization) {
-    return res.status(401).json({ error: 'Missing authorization headers' });
+    return res.status(401).json({ error: 'missing authorization headers' });
   }
 
   const token = req.headers.authorization.split(' ')[1];
 
   jwt.verify(token, jwtConfig.secretKey, (err, decoded: IDecode) => {
     if (err) {
-      return res.status(401).json({ error: 'Incorrect email or password' });
+      return res.status(401).json({ error: 'incorrect email or password' });
     }
     req.id = decoded.user.id;
     req.email = decoded.user.email;

@@ -11,6 +11,6 @@ export const findAllUserService = async () => {
 
     return users;
   } catch {
-    throw new ErrorHandler(400, 'Estimated parameter not found');
+    throw new ErrorHandler(404, 'no users found');
   }
 };

@@ -14,14 +14,14 @@ import { feedbackModel } from '../models';
 const feedbackRouter = Router();
 
 feedbackRouter.post(
-  '/feedback',
+  '/user/feedback',
   validateModelMiddleware(feedbackModel),
   validateTokenMiddleware,
   createFeedbackController
 );
 
 feedbackRouter.get(
-  '/feedback?',
+  '/user/feedback?',
   validateTokenMiddleware,
   validateAdminMiddleware,
   getFeedbackController

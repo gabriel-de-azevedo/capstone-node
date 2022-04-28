@@ -19,36 +19,36 @@ import { userPatchModel } from '../models/userPatch.model';
 const userRouter = Router();
 
 userRouter.post(
-  '/register',
+  '/user/register',
   validateModelMiddleware(userModel),
   registerUserController
 );
 
 userRouter.post(
-  '/login',
+  '/user/login',
   validateModelMiddleware(userLoginModel),
   loginUserController
 );
 
 userRouter.patch(
-  '/update',
+  '/user/update',
   validateModelMiddleware(userPatchModel),
   validateTokenMiddleware,
   updateUserController
 );
 
 userRouter.patch(
-  '/update/admin/:id',
+  '/user/authorize/:id',
   validateModelMiddleware(userAdminModel),
   validateTokenMiddleware,
   validateAuthMiddleware,
   updateUserAdminController
 );
 
-userRouter.get('/user/', validateTokenMiddleware, findUserController);
+userRouter.get('/user/profile', validateTokenMiddleware, findUserController);
 
 userRouter.get(
-  '/users',
+  '/user',
   validateTokenMiddleware,
   validateAdminMiddleware,
   findAllUsersController
