@@ -5,6 +5,7 @@ import { handleError } from '../../utils';
 export const updateUserController = async (req: Request, res: Response) => {
   const { id } = req;
   const body = req.validated;
+  delete body.password;
 
   try {
     const user = await updateUserService(id, body);
