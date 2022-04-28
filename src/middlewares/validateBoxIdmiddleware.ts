@@ -14,8 +14,6 @@ export const validateBoxId = async (
 
     const box = await new BoxRepository().findBoxByKey('id', boxId);
 
-    console.log(box);
-
     if (!box[0]) {
       return res.status(400).json({ error: 'invalid boxId' });
     }
