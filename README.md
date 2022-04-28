@@ -587,25 +587,23 @@ _Resposta:_
 
 _Envio:_
 
-```json
-{
-  "method":string,
-  "total":number,
-  "boxId":string,
-}
+```
+no body
 ```
 
 _Resposta:_
 
 ```json
-{
+[
+  {
   "id":string,
   "date":string,
   "method":string,
   "total": number,
   "user": <user>,
   "box": <box>
-}
+ }
+]
 ```
 
 ### GET/box/payment/user
@@ -613,29 +611,29 @@ _Resposta:_
 #### Descrição
 
 ```
-  - Necessário o envio do token
-  - Traz os pagamentos do usuário solicitante
+
+- Necessário o envio do token
+- Traz os pagamentos do usuário solicitante
+
 ```
 
 _Envio:_
 
-```json
-{
-  "method":string,
-  "total":number,
-  "boxId":string,
-}
+```
+no body
 ```
 
 _Resposta:_
 
 ```json
-{
+[
+  {
   "id":string,
   "date":string,
   "method":string,
   "total": number,
   "user": <user>,
   "box": <box>
-}
+ }
+]
 ```
