@@ -27,7 +27,7 @@ export const registerUserService = async (validated: CreationUser) => {
       const detail = (error as IDetail).detail;
 
       if (detail.includes('already exists')) {
-        throw new ErrorHandler(409, detail);
+        throw new ErrorHandler(409, 'email or cpf already in use');
       }
     }
   }
