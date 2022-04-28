@@ -20,6 +20,6 @@ productRoute.post(
   createProductController
 );
 
-productRoute.get('/box/product?', validateTokenMiddleware, getProductControler);
+productRoute.get('/box/product?', getProductControler);
 
 export { productRoute };
