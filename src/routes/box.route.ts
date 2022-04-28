@@ -18,6 +18,6 @@ boxRoute.post(
   createBoxController
 );
 
-boxRoute.get('/box?', validateTokenMiddleware, getBoxControler);
+boxRoute.get('/box?', getBoxControler);
 
 export { boxRoute };

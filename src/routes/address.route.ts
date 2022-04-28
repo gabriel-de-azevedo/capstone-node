@@ -12,14 +12,14 @@ import { addressModel } from '../models';
 const addressRouter = Router();
 
 addressRouter.post(
-  '/register/address',
+  '/user/address/register',
   validateModelMiddleware(addressModel),
   validateTokenMiddleware,
   registerAddressController
 );
 
 addressRouter.patch(
-  '/update/address',
+  '/user/address/update',
   validateModelMiddleware(addressModel),
   validateTokenMiddleware,
   updateAddressController
