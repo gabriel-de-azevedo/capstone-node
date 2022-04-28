@@ -8,14 +8,14 @@ export const loginUserService = async (email: string, password: string) => {
   const user = await new UserRepository().findUser('email', email);
 
   if (!user) {
-    throw new ErrorHandler(401, 'Wrong email/password');
+    throw new ErrorHandler(401, 'incorrect credentials');
   }
 
   if (user) {
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-      throw new ErrorHandler(401, 'Wrong email/password');
+      throw new ErrorHandler(401, 'incorrect credentials');
     }
 
     delete user.address;

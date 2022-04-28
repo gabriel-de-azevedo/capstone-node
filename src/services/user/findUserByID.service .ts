@@ -10,6 +10,6 @@ export const findUserByIDService = async (params: string, value: string) => {
 
     return user;
   } catch {
-    throw new ErrorHandler(400, 'Estimated parameter not found');
+    throw new ErrorHandler(404, 'user not found');
   }
 };
