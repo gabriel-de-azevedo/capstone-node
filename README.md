@@ -1,6 +1,6 @@
-# Capstone Q4 - Capstock
+# Capstone Q4 - Node Subscription API
 
-Uma aplicação em que o cliente poderá contratar um serviço mensal por meio de inscrição, onde terá direito de receber todo mês uma box de produtos de uma das três categorias escolhida por ele.
+Uma API em que o cliente poderá contratar um serviço mensal por meio de inscrição, onde terá direito de receber todo mês uma box de produtos de uma das três categorias escolhida por ele.
 Após o cadastro, o cliente poderá fazer sua inscrição ao adquirir uma box, tendo acesso também a informações como um registro de box recebidas, histórico de pagamento, box atual e a escolha para o proximo mês. A empresa poderá cadastrar as escolhas do próximo mês,
 e valores em estoque.
 
