@@ -546,7 +546,7 @@ _Resposta:_
 
 ```
   - Necessário o envio do token
-  - Cria um pedido de compra e o vincula a uma box e ao usuário solicitante
+  - Registra um pagamento e o vincula a uma box e ao usuário solicitante
 ```
 
 _Envio:_
@@ -579,10 +579,42 @@ _Resposta:_
 ```
   - Necessário o envio do token
   - O token deve ser de um administrador
-  - Cria um produto e o vincula a uma box
+  - Traz os dados de pagamentos
   - Query params aceito aceitos é:
       id:uui do pedido - retorna o pedido com o id enviado
-  - Caso nao seja passado um parametro retornará todos pedidos
+  - Caso nao seja passado um parametro retornará todos os pagamentos
+```
+
+_Envio:_
+
+```json
+{
+  "method":string,
+  "total":number,
+  "boxId":string,
+}
+```
+
+_Resposta:_
+
+```json
+{
+  "id":string,
+  "date":string,
+  "method":string,
+  "total": number,
+  "user": <user>,
+  "box": <box>
+}
+```
+
+### GET/box/payment/user
+
+#### Descrição
+
+```
+  - Necessário o envio do token
+  - Traz os pagamentos do usuário solicitante
 ```
 
 _Envio:_

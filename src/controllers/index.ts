@@ -14,6 +14,7 @@ import { registerAddressController } from './adress/registerAddress.controller';
 import { updateAddressController } from './adress/updateAddress.controller';
 import { createPaymentController } from './payment/createPayment.controller';
 import { getPaymentController } from './payment/getPayment.controller';
+import { getUserPaymentController } from './payment/getUserPayment.controller';
 
 export {
   loginUserController,
@@ -32,4 +33,5 @@ export {
   updateAddressController,
   createPaymentController,
   getPaymentController,
+  getUserPaymentController,
 };
