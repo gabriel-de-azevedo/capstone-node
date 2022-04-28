@@ -1,5 +1,9 @@
 import { Router } from 'express';
-import { createPaymentController, getPaymentController } from '../controllers';
+import {
+  createPaymentController,
+  getPaymentController,
+  getUserPaymentController,
+} from '../controllers';
 
 import {
   validateAdminMiddleware,
@@ -24,6 +28,12 @@ paymentRouter.get(
   validateTokenMiddleware,
   validateAdminMiddleware,
   getPaymentController
+);
+
+paymentRouter.get(
+  '/box/payment/user',
+  validateTokenMiddleware,
+  getUserPaymentController
 );
 
 export { paymentRouter };
