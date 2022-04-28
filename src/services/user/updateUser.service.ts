@@ -16,6 +16,6 @@ export const updateUserService = async (id: string, body: any) => {
 
     return user;
   } catch {
-    throw new ErrorHandler(400, 'Estimated parameter not found');
+    throw new ErrorHandler(404, 'user not found');
   }
 };

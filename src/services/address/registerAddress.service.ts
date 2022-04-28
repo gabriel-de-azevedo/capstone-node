@@ -37,7 +37,7 @@ export const registerAddressService = async (
       const detail = (error as IDetail).detail;
 
       if (detail.includes('already exists')) {
-        throw new ErrorHandler(409, detail);
+        throw new ErrorHandler(409, 'address already exists');
       }
     }
   }

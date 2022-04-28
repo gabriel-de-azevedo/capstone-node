@@ -6,6 +6,7 @@ import { boxModel } from './box.model';
 import { productModel } from './product.model';
 import { addressModel } from './address.model';
 import { paymentModel } from './payment.model';
+import { addressPatchModel } from './addressPatch.model';
 
 export {
   userModel,
@@ -13,6 +14,7 @@ export {
   userAdminModel,
   feedbackModel,
   addressModel,
+  addressPatchModel,
   boxModel,
   productModel,
   paymentModel,

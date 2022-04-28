@@ -12,7 +12,7 @@ import { productModel } from '../models';
 const productRoute = Router();
 
 productRoute.post(
-  '/product',
+  '/box/product',
   validateModelMiddleware(productModel),
   validateTokenMiddleware,
   validateAdminMiddleware,
@@ -20,6 +20,6 @@ productRoute.post(
   createProductController
 );
 
-productRoute.get('/product?', validateTokenMiddleware, getProductControler);
+productRoute.get('/box/product?', getProductControler);
 
 export { productRoute };

@@ -36,6 +36,6 @@ export const updateAddressService = async (
 
     return savedAddress;
   } catch {
-    throw new ErrorHandler(400, 'Estimated parameter not found');
+    throw new ErrorHandler(404, 'address not found');
   }
 };
